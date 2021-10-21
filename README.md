@@ -2,6 +2,8 @@
 
 A Toit driver for the DHT11 temperature and humidity sensor.
 
+The temperature is returned in Celcius in a 2-element list. Temperature is stored in the first element. Humidity is stored in the second.
+
 ## Usage
 
 You will need two GPIO pins to use this driver. Normally, a single 
