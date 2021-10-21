@@ -4,6 +4,13 @@ A Toit driver for the DHT11 temperature and humidity sensor.
 
 ## Usage
 
+NOTE: Normally, the same GPIO pin would be used as output for triggering the sensor, 
+and subsequently switched to input for reading the response.
+However since the DHT response comes so quickly, there is no time to
+switch the pin from output to input. Hence two pins are needed: One
+for triggering the data, and a second for reading data.
+Both should be connected to the data pin of your DTH sensor.
+
 A simple usage example.
 
 ```
