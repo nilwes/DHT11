@@ -39,7 +39,3 @@ main:
 ```
 
 See the `examples` folder for more examples.
-
-## Features and bugs
-
-[tracker]: https://github.com/nilwes/DHT11/issues
