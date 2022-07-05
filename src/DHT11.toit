@@ -45,7 +45,7 @@ class DHTsensor:
 
     // Check length of low segments. According to DHT specs, these should be 50us.
     // This will be our baseline threshold when extracting bytes
-    threshold = calc_hreshold_ pulse_counts
+    threshold = calc_threshold_ pulse_counts
     data      = extract_bytes_  pulse_counts threshold
 
     // Checksum control
@@ -103,7 +103,8 @@ class DHTsensor:
   /**
   Calculates the average of pulse lengths between bits (threshold).
   */
-  calc_hreshold_ pulse_counts/List -> int:
+  calc_threshold_ pulse_counts/List -> int:
+    // There are always at least 2 pulses, so it's safe to use `reduce` without any initial value.
     pulse_sum := pulse_counts.reduce: | a b | a + b
     threshold := pulse_sum / (DHT_PULSES_ - 1)
     return threshold
