@@ -25,8 +25,8 @@ class DhtResult:
     return "T: $(%.2f temperature), H: $(%.2f humidity)"
 
 class Dht11:
-  static DHT_PULSES_   ::= 41   // Bit pulses produced by DHT sensor. Initialization + 40 bits data.
-  static DHT_MAXCOUNT_ ::= 1000 // Timeout while waiting for edges.
+  static DHT_PULSES_   ::= 41    // Bit pulses produced by DHT sensor. Initialization + 40 bits data.
+  static DHT_MAX_COUNT_ ::= 1000 // Timeout while waiting for edges.
 
   pin_ /gpio.Pin
 
@@ -38,7 +38,7 @@ class Dht11:
     sleep --ms=1000 // Allow the sensor to stabilize after power-up.
 
   /**
-  Reads the temperature and humidity from the DTH11.
+  Reads the temperature and humidity from the DHT11.
 
   When reading no or invalid data the function will retry up to $max_retries times.
 
@@ -85,7 +85,7 @@ class Dht11:
 
     // Immediately start waiting for falling edge
     while pin_.get == 1:
-      if ++count >= DHT_MAXCOUNT_:
+      if ++count >= DHT_MAX_COUNT_:
         return null
 
     // Record pulse widths for the expected result bits.
@@ -98,12 +98,12 @@ class Dht11:
 
       // Count how long pin is low and store in pulse_counts[i]
       while pin_.get != 1:
-        if ++pulse_count_low >= DHT_MAXCOUNT_:
+        if ++pulse_count_low >= DHT_MAX_COUNT_:
           return null
 
       // Count how long pin is high and store in pulse_counts[i+1]
       while pin_.get == 1:
-        if ++pulse_count_high >= DHT_MAXCOUNT_:
+        if ++pulse_count_high >= DHT_MAX_COUNT_:
           return null
 
       pulse_counts[i] = pulse_count_low
