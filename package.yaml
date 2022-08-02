@@ -1,1 +1,2 @@
-
+name: dht11
+description: Bit-banging diver for the DHT11 sensor.
