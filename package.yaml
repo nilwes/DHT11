@@ -1,2 +1,2 @@
 name: dht11
-description: Bit-banging diver for the DHT11 sensor.
+description: Bit-banging driver for the DHT11 sensor.
